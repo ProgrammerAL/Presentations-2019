@@ -48,6 +48,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HardwareAbstractions\HardwareAbstractions.csproj">
+      <Project>{558AAB56-8115-470B-9889-0803A1887630}</Project>
+      <Name>HardwareAbstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HardwareDrivers\HardwareDrivers.csproj">
+      <Project>{720E5E9C-D361-4355-88CB-89427C2CA657}</Project>
+      <Name>HardwareDrivers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{1D8025BE-9267-41F2-95F0-CCB76E4CDCA5}</Project>
       <Name>Utilities</Name>
