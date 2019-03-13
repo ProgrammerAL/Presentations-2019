@@ -4,7 +4,7 @@ using GHIElectronics.TinyCLR.Devices.I2c;
 
 namespace HardwareDrivers.LightSensors.APDS9301
 {
-    public partial class APDS9301_LightSensor : ILightSensor
+    public class APDS9301_LightSensor : ILightSensor
     {
         /// <summary>
         /// Minimum value that should be used for the polling frequency.
