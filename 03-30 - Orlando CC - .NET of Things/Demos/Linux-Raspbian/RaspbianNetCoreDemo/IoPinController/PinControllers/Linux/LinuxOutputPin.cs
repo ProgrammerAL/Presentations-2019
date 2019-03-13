@@ -15,7 +15,7 @@ namespace IoPinController.PinControllers.Linux
         
         private readonly string _outputModeFilePath;
 
-        public LinuxOutputPin(int number, IAsyncFileUtil fileUtils, IIoPinControllerLogger logger) : base(number, fileUtils, logger)
+        public LinuxOutputPin(int number, IAsyncFileUtil fileUtils) : base(number, fileUtils)
         {
             _outputModeFilePath = $"/sys/class/gpio/gpio{this.NumberText}/value";
         }
@@ -23,13 +23,8 @@ namespace IoPinController.PinControllers.Linux
         protected override void OnInitialize()
         {
             //First check if the pin has already been exported
-            if (FileUtils.DirectoryExists($"/sys/class/gpio/gpio{this.NumberText}"))
+            if (!FileUtils.DirectoryExists($"/sys/class/gpio/gpio{this.NumberText}"))
             {
-                Logger.LogInfo(() => $"GPIO {NumberText} already being exported. Will not export it.");
-            }
-            else
-            {
-                Logger.LogInfo(() => $"Setting up GPIO {NumberText} for export");
                 FileUtils.AppendText(LinuxPinController.ExportFilePath, NumberText);
             }
 
@@ -51,7 +46,6 @@ namespace IoPinController.PinControllers.Linux
 
         private async Task UnexportPinAsync()
         {
-            Logger.LogInfo(() => $"Unexporting GPIO {NumberText}");
             await FileUtils.AppendTextAsync(LinuxPinController.UnexportFilePath, NumberText);
         }
     }

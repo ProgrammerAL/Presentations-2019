@@ -9,7 +9,7 @@ namespace IoPinController
 {
     public abstract class OutputPin : Pin
     {
-        protected OutputPin(int number, IAsyncFileUtil fileWriter, IIoPinControllerLogger logger) : base(number, fileWriter, logger)
+        protected OutputPin(int number, IAsyncFileUtil fileWriter) : base(number, fileWriter)
         {
         }
 

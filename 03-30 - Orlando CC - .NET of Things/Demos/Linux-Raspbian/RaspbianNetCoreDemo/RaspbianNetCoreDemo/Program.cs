@@ -18,15 +18,13 @@ namespace RaspbianNetCoreDemo
 
         static void Main()
         {
+            //Compile with:
+            //  dotnet publish ./RaspbianNetCoreDemo -c Release -r linux-arm --self-contained
+
             var taskSchedulerUtility = new TaskSchedulerUtility();
             var fileUtils = new AsyncFileUtil();
-            var consoleLogger = new ConsoleLogger
-            {
-                IsLoggingErrors = true,
-                IsLoggingInfo = true
-            };
 
-            var pinController = new LinuxPinController(fileUtils, consoleLogger, taskSchedulerUtility);
+            var pinController = new LinuxPinController(fileUtils, taskSchedulerUtility);
             var ledPin = pinController.GetOrCreateOutputPin(LedPinNumber);
 
             BlockingTimer sleepTimer = new BlockingTimer(TimeSpan.FromMilliseconds(100));

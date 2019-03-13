@@ -9,19 +9,17 @@ namespace IoPinController
     {
         private bool _isInitialized;
 
-        protected Pin(int number, IAsyncFileUtil fileUtils, IIoPinControllerLogger logger)
+        protected Pin(int number, IAsyncFileUtil fileUtils)
         {
             Number = number;
             NumberText = number.ToString();
             FileUtils = fileUtils;
-            Logger = logger;
             Initialize();
         }
 
         public int Number { get; }
         public string NumberText { get; }
         public IAsyncFileUtil FileUtils { get; }
-        public IIoPinControllerLogger Logger { get; }
         public abstract PinDirectionType PinDirection { get; }
 
         public void Dispose()
