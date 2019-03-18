@@ -22,12 +22,12 @@ namespace HardwareDrivers.LightSensors.APDS9301
         }
 
         private readonly ushort _updateInterval = 100;
-        private readonly I2cDevice _ledDevice;
+        private readonly I2cDevice _lightSensordDevice;
         private readonly I2CHelper _i2cHelper;
 
         private readonly Thread _updateThread;
 
-        public APDS9301_LightSensor(I2cDevice ledDevice, TimeSpan updateInterval)
+        public APDS9301_LightSensor(I2cDevice lightSensorDevice, TimeSpan updateInterval)
         {
             if (updateInterval.TotalMilliseconds > ushort.MaxValue)
             {
@@ -40,8 +40,8 @@ namespace HardwareDrivers.LightSensors.APDS9301
 
             _updateInterval = (ushort)updateInterval.TotalMilliseconds;
 
-            _ledDevice = ledDevice;
-            _i2cHelper = new I2CHelper(_ledDevice);
+            _lightSensordDevice = lightSensorDevice;
+            _i2cHelper = new I2CHelper(_lightSensordDevice);
 
             TurnOn();
             SensorGain = Gain.Low;
