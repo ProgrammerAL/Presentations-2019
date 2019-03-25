@@ -34,7 +34,7 @@ namespace Win10IoTDemo
             var sleepTimer = new BlockingTimer(TimeSpan.FromMilliseconds(100));
             _ledController = new LedControl(_ledPin, sleepTimer);
 
-            I2cConnectionSettings ledDeviceConnectionSettings = new I2cConnectionSettings(LightSensorDeviceAddress);
+            var ledDeviceConnectionSettings = new I2cConnectionSettings(LightSensorDeviceAddress);
 
             var i2cController = await I2cController.GetDefaultAsync();
             var lightSensorDevice = i2cController.GetDevice(ledDeviceConnectionSettings);

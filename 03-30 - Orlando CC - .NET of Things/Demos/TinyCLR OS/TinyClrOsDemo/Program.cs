@@ -21,11 +21,6 @@ namespace TinyCLRApplicationSample
             BlockingTimer sleepTimer = new BlockingTimer(TimeSpan.FromMilliseconds(100));
             LedControl ledControl = new LedControl(led, sleepTimer);
 
-            //while (true)
-            //{
-            //    ledControl.Blink();
-            //}
-
             int sdaPin = FezPins.GpioPin.A0;
             int slcPin = FezPins.GpioPin.A1;
             int lightSensorDeviceAddress = 0x39;

@@ -15,8 +15,7 @@ namespace HardwareDrivers.RPi
             _address = address;
             _busHandle = I2CWrapper.OpenBus(i2cBusPath);
         }
-
-
+        
         public void Write(byte[] output)
         {
             I2CWrapper.WriteBytes(_busHandle, _address, output, output.Length);
