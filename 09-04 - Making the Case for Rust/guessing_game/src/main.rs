@@ -16,7 +16,7 @@ fn main() {
 
         let mut guess = String::new();
 
-        io::stdin().read_line(&mut guess)
+        io::stdin().read_line(&guess)
             .expect("Failed to read line");
 
         let parsed_guess: u32 = match guess.trim().parse() {
@@ -24,7 +24,7 @@ fn main() {
             Err(_) => continue,
         };
 
-        println!("You guessed: {}", guess);
+        println!("You guessed: {}", parsed_guess);
 
         guesses.push(parsed_guess);
 
